@@ -26,8 +26,8 @@ best_idx_x = None
 best_idx_y = None
 
 min_rec = 1e8
-def run_icp(i):
-    np.random.seed(i)
+def run_icp(s0, i):
+    np.random.seed(s0 + i)
     icp = ICPTrainer(src_W.copy(), tgt_W.copy(), True, params.n_pca)
     t0 = time.time()
     indices_x, indices_y, rec, bb = icp.train_icp(params.icp_init_epochs)
@@ -36,10 +36,11 @@ def run_icp(i):
     return indices_x, indices_y, rec, bb
 
 
+s0 = np.random.randint(50000)
 results = []
 if params.n_processes == 1:
     for i in range(params.n_icp_runs):
-        results += [run_icp(i)]
+        results += [run_icp(s0, i)]
 else:
     pool = multiprocessing.Pool(processes=params.n_processes)
     for result in tqdm.tqdm(pool.imap_unordered(run_icp, range(params.n_icp_runs)), total=params.n_icp_runs):
@@ -78,5 +79,5 @@ TY = icp_ft.icp.TY
 if not os.path.exists(params.cp_dir):
     os.mkdir(params.cp_dir)
 
-np.save("%s/%s_%s_TX" % (params.cp_dir, params.src_lang, params.tgt_lang), TX)
-np.save("%s/%s_%s_TY" % (params.cp_dir, params.tgt_lang, params.src_lang), TY)
+np.save("%s/%s_%s_T" % (params.cp_dir, params.src_lang, params.tgt_lang), TX)
+np.save("%s/%s_%s_T" % (params.cp_dir, params.tgt_lang, params.src_lang), TY)
