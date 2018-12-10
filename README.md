@@ -36,9 +36,13 @@ Where comparison method 'nn' is faster, and 'csls_knn_10' is more accurate. It c
 
 All hyper-parameter choices may be modified in the params.py file. The optimal number of processes should be set in accordance with the specific system configuration. 
 
-In the case that no good initialization is found, increase the number of icp runs (params.n_icp_runs).
+Reducing the number of icp_runs (params.n_icp_runs) will reduce run-time. In the case that no good initialization is found, increase the number of icp runs (params.n_icp_runs).
 
+## Credit
 Credit to Adam Polyak for significantly speeding up the code.
 
 ## License
 This project is CC-BY-NC-licensed.
+
+## Changelog
+10-dec-2018: Fixed bug in eval.py - results are now in-line with paper on non-european languages
