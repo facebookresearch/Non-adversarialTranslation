@@ -2,7 +2,7 @@
 
 This repo contains PyTorch code replicating the main ideas presented in:
 
-- **Non-Adversarial Unsupervised Word Tralsation**<br/>
+- **Non-Adversarial Unsupervised Word Translation**<br/>
 *Yedid Hoshen and Lior Wolf, EMNLP 2018*<br/>
 [https://arxiv.org/abs/1801.06126](https://arxiv.org/abs/1801.06126)
 
