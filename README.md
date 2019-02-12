@@ -46,3 +46,4 @@ This project is CC-BY-NC-licensed.
 
 ## Changelog
 10-dec-2018: Fixed bug in eval.py - results are now in-line with paper on non-european languages
+12-feb-2019: Updated links to bilingual test dictionaries
